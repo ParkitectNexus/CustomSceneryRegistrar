@@ -5,11 +5,11 @@ namespace CustomSceneryRegistrar.Decorators.Type
 {
     class SeatingDecorator : IDecorator
     {
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
-            //if (customObject.ContainsKey("seatingOptions"))
+            //if (CustomSceneryV1.ContainsKey("seatingOptions"))
             //{
-            //    Dictionary<string, object> seatingOptions = customObject["seatingOptions"] as Dictionary<string, object>;
+            //    Dictionary<string, object> seatingOptions = CustomSceneryV1["seatingOptions"] as Dictionary<string, object>;
                 
             //    go.AddComponent<Seating>();
 

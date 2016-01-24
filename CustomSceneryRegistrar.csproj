@@ -59,7 +59,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomObject.cs" />
+    <Compile Include="CustomSceneryV1.cs" />
     <Compile Include="Decorators\GridDecorator.cs" />
     <Compile Include="Decorators\GridSubdivisionDecorator.cs" />
     <Compile Include="Decorators\HeightDecorator.cs" />

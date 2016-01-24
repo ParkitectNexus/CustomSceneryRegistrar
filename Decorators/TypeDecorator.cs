@@ -13,36 +13,32 @@ namespace CustomSceneryRegistrar.Decorators
             _type = type;
         }
 
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             switch (_type)
             {
                 case "deco":
-                    (new DecoDecorator()).Decorate(go, customObject);
+                    (new DecoDecorator()).Decorate(go, customScenery);
                     break;
                 case "trashbin":
-                    (new TrashBinDecorator()).Decorate(go, customObject);
+                    (new TrashBinDecorator()).Decorate(go, customScenery);
                     break;
                 case "seating":
-                    (new SeatingDecorator()).Decorate(go, customObject);
+                    (new SeatingDecorator()).Decorate(go, customScenery);
                     break;
-                case "seatingAuto":
-                    (new SeatingAutoDecorator()).Decorate(go, customObject);
+                case "fence":
+                    (new FenceDecorator()).Decorate(go, customScenery);
                     break;
-                //case "fence":
-                //    (new FenceDecorator()).Register(go, customObject);
-                //    break;
                 case "lamp":
-                    (new LampDecorator()).Decorate(go, customObject);
+                    (new LampDecorator()).Decorate(go, customScenery);
                     break;
                 default:
-                    Application.Quit();
                     Debug.Log(_type + "is no valid type");
                     break;
             }
         }
 
-        //public GameObject Register(CustomObject customObject)
+        //public GameObject Register(CustomSceneryV1 CustomSceneryV1)
         //{
         //    GameObject asset = null;
 
@@ -60,7 +56,7 @@ namespace CustomSceneryRegistrar.Decorators
         //            break;
         //    }
 
-        //    Register(asset, (CustomObject) options);
+        //    Register(asset, (CustomSceneryV1) options);
 
         //    return asset;
         //}

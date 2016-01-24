@@ -11,23 +11,31 @@ namespace CustomSceneryRegistrar
     {
         public static Registrar Instance;
 
+        private List<BuildableObject> _customObjects = new List<BuildableObject>();
+
         void Awake()
         {
             Instance = this;
         }
 
-        public static GameObject Register(CustomObject customObject)
+        public static GameObject Register(CustomSceneryV1 customSceneryV1)
         {
-            GameObject asset = customObject.Object;
-            (new TypeDecorator(customObject.Type)).Decorate(asset, customObject);
-            (new PriceDecorator(customObject.Price)).Decorate(asset, customObject);
-            (new NameDecorator(customObject.Name)).Decorate(asset, customObject);
+            GameObject asset = customSceneryV1.Object;
+
+            if (asset == null)
+            {
+                asset = new GameObject();
+            }
+
+            (new TypeDecorator(customSceneryV1.Type)).Decorate(asset, customSceneryV1);
+            (new PriceDecorator(customSceneryV1.Price)).Decorate(asset, customSceneryV1);
+            (new NameDecorator(customSceneryV1.Name)).Decorate(asset, customSceneryV1);
 
             //if (options.ContainsKey("grid"))
             //    (new GridDecorator((bool)options["grid"])).Register(asset, options);
 
-            if (customObject.Recolorable)
-                (new RecolorableDecorator(customObject.Colors)).Decorate(asset, customObject);
+            if (customSceneryV1.Recolorable)
+                (new RecolorableDecorator(customSceneryV1.Colors)).Decorate(asset, customSceneryV1);
 
             DontDestroyOnLoad(asset);
 
@@ -51,8 +59,14 @@ namespace CustomSceneryRegistrar
             buildableObject.isPreview = true;
 
             AssetManager.Instance.registerObject(buildableObject);
+        }
 
-            Debug.Log("Registered " + gameObject.GetComponent<BuildableObject>().name);
+        public void UnloadScenery()
+        {
+            foreach (BuildableObject customObject in _customObjects)
+            {
+                AssetManager.Instance.unregisterObject(customObject);
+            }
         }
     }
 }

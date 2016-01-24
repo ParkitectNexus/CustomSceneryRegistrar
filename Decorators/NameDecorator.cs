@@ -12,7 +12,7 @@ namespace CustomSceneryRegistrar.Decorators
             _name = name;
         }
 
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             go.GetComponent<BuildableObject>().setDisplayName(_name);
             go.name = _name;

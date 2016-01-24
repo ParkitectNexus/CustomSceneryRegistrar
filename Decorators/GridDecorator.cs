@@ -5,18 +5,12 @@ namespace CustomSceneryRegistrar.Decorators
 {
     class GridDecorator : IDecorator
     {
-        private bool _grid;
-
-        public GridDecorator(bool grid)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
-            _grid = grid;
-        }
-        
-        public void Decorate(GameObject go, CustomObject customObject)
-        {
-            if (go.GetComponent<Deco>() != null && _grid)
+            if (go.GetComponent<Deco>() != null)
             {
-                go.GetComponent<Deco>().buildOnGrid = _grid;
+                go.GetComponent<Deco>().buildOnGrid = true;
+                go.GetComponent<Deco>().defaultGridSubdivision = customScenery.GridSubdivision;
             }
         }
     }

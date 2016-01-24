@@ -5,6 +5,6 @@ namespace CustomSceneryRegistrar.Decorators
 {
     interface IDecorator
     {
-        void Decorate(GameObject go, CustomObject customObject);
+        void Decorate(GameObject go, CustomSceneryV1 customScenery);
     }
 }

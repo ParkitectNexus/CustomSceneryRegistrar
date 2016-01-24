@@ -5,7 +5,7 @@ namespace CustomSceneryRegistrar.Decorators.Type
 {
     class LampDecorator : IDecorator
     {
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             go.AddComponent<PathAttachment>();
         }

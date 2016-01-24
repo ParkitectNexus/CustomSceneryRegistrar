@@ -3,30 +3,23 @@ using UnityEngine;
 
 namespace CustomSceneryRegistrar.Decorators.Type
 {
-    //class FenceDecorator : IDecorator
-    //{
-    //    public void Register(GameObject go, CustomObject customObject)
-    //    {
-    //        go.AddComponent<Fence>();
+    class FenceDecorator : IDecorator
+    {
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
+        {
+            go.AddComponent<Fence>();
+            
+            if (customScenery.FenceFlat != null)
+            {
+                go.GetComponent<Fence>().flatGO = customScenery.FenceFlat;
+            }
+            
+            if (customScenery.FencePost != null)
+            {
+                go.GetComponent<Fence>().postGO = customScenery.FencePost;
+            }
 
-    //        Dictionary<string, object> fenceOptions = customObject["fenceOptions"] as Dictionary<string, object>;
-
-
-    //        if (fenceOptions.ContainsKey("flat"))
-    //        {
-    //            GameObject flat = Object.Instantiate(assetBundle.LoadAsset((string)fenceOptions["flat"])) as GameObject;
-    //            flat.transform.rotation = Quaternion.identity;
-    //            go.GetComponent<Fence>().flatGO = flat;
-    //        }
-
-    //        if (fenceOptions.ContainsKey("post"))
-    //        {
-    //            GameObject post = Object.Instantiate(assetBundle.LoadAsset((string)fenceOptions["post"])) as GameObject;
-    //            post.transform.rotation = Quaternion.identity;
-    //            go.GetComponent<Fence>().postGO = post;
-    //        }
-
-    //        go.GetComponent<Fence>().hasMidPosts = false;
-    //    }
-    //}
+            go.GetComponent<Fence>().hasMidPosts = false;
+        }
+    }
 }

@@ -16,7 +16,7 @@ namespace CustomSceneryRegistrar.CustomScenery.Decorators
             _snap = snap;
         }
 
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             if (go.GetComponent<Deco>() != null)
             {

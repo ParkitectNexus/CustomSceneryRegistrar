@@ -12,7 +12,7 @@ namespace CustomSceneryRegistrar.Decorators
             _price = price;
         }
 
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             go.GetComponent<BuildableObject>().price = _price;
         }

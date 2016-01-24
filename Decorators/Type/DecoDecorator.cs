@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CustomSceneryRegistrar.CustomScenery.Decorators;
 using UnityEngine;
 
@@ -6,19 +7,24 @@ namespace CustomSceneryRegistrar.Decorators.Type
 {
     class DecoDecorator : IDecorator
     {
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             go.AddComponent<Deco>();
-            Debug.Log("Added deco");
 
-            //if (customObject.ContainsKey("heightDelta"))
-            //    (new HeightDecorator((double)customObject["heightDelta"])).Register(go, customObject);
+            if (Math.Abs(customScenery.HeightDelta) > 0.01f)
+                (new HeightDecorator(customScenery.HeightDelta)).Decorate(go, customScenery);
 
-            //if (customObject.ContainsKey("gridSubdivision"))
-            //    (new GridSubdivisionDecorator((double)customObject["gridSubdivision"])).Register(go, customObject);
+            if (Math.Abs(customScenery.GridSubdivision) > 0.01f)
+                (new GridDecorator()).Decorate(go, customScenery);
 
-            //if (customObject.ContainsKey("snapCenter"))
-            //    (new SnapToCenterDecorator((bool)customObject["snapCenter"])).Register(go, customObject);
+            if (customScenery.SnapCenter)
+                (new SnapToCenterDecorator(customScenery.SnapCenter)).Decorate(go, customScenery);
+
+            //if (CustomSceneryV1.ContainsKey("gridSubdivision"))
+            //    (new GridSubdivisionDecorator((double)CustomSceneryV1["gridSubdivision"])).Register(go, CustomSceneryV1);
+
+            //if (CustomSceneryV1.ContainsKey("snapCenter"))
+            //    (new SnapToCenterDecorator((bool)CustomSceneryV1["snapCenter"])).Register(go, CustomSceneryV1);
         }
     }
 }

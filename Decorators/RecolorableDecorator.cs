@@ -15,7 +15,7 @@ namespace CustomSceneryRegistrar.Decorators
             _colors = colors;
         }
 
-        public void Decorate(GameObject go, CustomObject customObject)
+        public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
             if (go.GetComponent<BuildableObject>() != null)
             {
