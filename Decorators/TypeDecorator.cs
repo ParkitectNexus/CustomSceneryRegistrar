@@ -1,21 +1,15 @@
-﻿using System.Collections.Generic;
-using CustomSceneryRegistrar.Decorators.Type;
+﻿using CustomSceneryRegistrar.Decorators.Type;
 using UnityEngine;
 
 namespace CustomSceneryRegistrar.Decorators
 {
     class TypeDecorator : IDecorator
     {
-        private string _type;
-
-        public TypeDecorator(string type)
-        {
-            _type = type;
-        }
-
         public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
-            switch (_type)
+            string type = customScenery.Type;
+
+            switch (type)
             {
                 case "deco":
                     (new DecoDecorator()).Decorate(go, customScenery);
@@ -33,32 +27,9 @@ namespace CustomSceneryRegistrar.Decorators
                     (new LampDecorator()).Decorate(go, customScenery);
                     break;
                 default:
-                    Debug.Log(_type + "is no valid type");
+                    Debug.Log(type + "is no valid type");
                     break;
             }
         }
-
-        //public GameObject Register(CustomSceneryV1 CustomSceneryV1)
-        //{
-        //    GameObject asset = null;
-
-        //    switch (_type)
-        //    {
-        //        case "deco":
-        //        case "trashbin":
-        //        case "seating":
-        //        case "seatingAuto":
-        //        case "lamp":
-        //            asset = Object.Instantiate(bundle.LoadAsset((string) options["model"])) as GameObject;
-        //            break;
-        //        case "fence":
-        //            asset = new GameObject();
-        //            break;
-        //    }
-
-        //    Register(asset, (CustomSceneryV1) options);
-
-        //    return asset;
-        //}
     }
 }

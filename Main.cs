@@ -1,24 +1,17 @@
-﻿using CustomSceneryRegistrar;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CustomSceneryRegistrar
 {
     public class Main : IMod
     {
-        private GameObject _go;
-
         public void onEnabled()
         {
-            _go = new GameObject();
 
-            _go.AddComponent<Registrar>();
         }
 
         public void onDisabled()
         {
-            _go.GetComponent<Registrar>().UnloadScenery();
-
-            Object.Destroy(_go);
+            Registrar.UnloadScenery();
         }
 
         public string Name { get { return "Custom Scenery Registrar"; } }

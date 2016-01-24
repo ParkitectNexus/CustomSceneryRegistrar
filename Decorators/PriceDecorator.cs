@@ -1,20 +1,12 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CustomSceneryRegistrar.Decorators
 {
     class PriceDecorator : IDecorator
     {
-        private float _price;
-
-        public PriceDecorator(float price)
-        {
-            _price = price;
-        }
-
         public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
-            go.GetComponent<BuildableObject>().price = _price;
+            go.GetComponent<BuildableObject>().price = customScenery.Price;
         }
     }
 }

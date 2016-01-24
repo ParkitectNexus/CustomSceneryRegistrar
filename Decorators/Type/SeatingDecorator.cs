@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CustomSceneryRegistrar.Decorators.Type
 {
@@ -7,14 +6,8 @@ namespace CustomSceneryRegistrar.Decorators.Type
     {
         public void Decorate(GameObject go, CustomSceneryV1 customScenery)
         {
-            //if (CustomSceneryV1.ContainsKey("seatingOptions"))
-            //{
-            //    Dictionary<string, object> seatingOptions = CustomSceneryV1["seatingOptions"] as Dictionary<string, object>;
-                
-            //    go.AddComponent<Seating>();
-
-            //    go.GetComponent<Seating>().hasBackRest = (bool)seatingOptions["hasBackRest"];
-            //}
+            go.AddComponent<Seating>();
+            go.GetComponent<Seating>().hasBackRest = customScenery.HasBackRest;
         }
     }
 }

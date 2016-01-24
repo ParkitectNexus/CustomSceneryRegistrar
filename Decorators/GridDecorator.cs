@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CustomSceneryRegistrar.Decorators
 {
@@ -9,8 +8,7 @@ namespace CustomSceneryRegistrar.Decorators
         {
             if (go.GetComponent<Deco>() != null)
             {
-                go.GetComponent<Deco>().buildOnGrid = true;
-                go.GetComponent<Deco>().defaultGridSubdivision = customScenery.GridSubdivision;
+                go.GetComponent<Deco>().buildOnGrid = customScenery.BuildOnGrid;
             }
         }
     }
